@@ -1,4 +1,5 @@
 import {Entity, model, property} from '@loopback/repository';
+/* Esta clase es un modelo para la tabla RolMenu en la base de datos. */
 
 @model()
 export class RolMenu extends Entity {
@@ -38,7 +39,6 @@ export class RolMenu extends Entity {
     required: true,
   })
   descargar: boolean;
-
 
   constructor(data?: Partial<RolMenu>) {
     super(data);

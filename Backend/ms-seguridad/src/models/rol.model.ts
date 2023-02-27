@@ -1,5 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 
+/* La clase Rol es un modelo que representa una entidad Rol */
 @model()
 export class Rol extends Entity {
   @property({
@@ -19,7 +20,6 @@ export class Rol extends Entity {
     type: 'string',
   })
   descripcion?: string;
-
 
   constructor(data?: Partial<Rol>) {
     super(data);

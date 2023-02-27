@@ -1,5 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 
+/* Es una clase modelo que representa una tabla de base de datos. */
 @model()
 export class Usuario extends Entity {
   @property({
@@ -48,7 +49,6 @@ export class Usuario extends Entity {
     required: true,
   })
   clave: string;
-
 
   constructor(data?: Partial<Usuario>) {
     super(data);

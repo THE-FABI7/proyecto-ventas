@@ -1,5 +1,6 @@
 import {Entity, model, property} from '@loopback/repository';
 
+/* La clase Menú es un modelo que representa un menú en la base de datos. */
 @model()
 export class Menu extends Entity {
   @property({
@@ -19,7 +20,6 @@ export class Menu extends Entity {
     type: 'string',
   })
   descripcion?: string;
-
 
   constructor(data?: Partial<Menu>) {
     super(data);
