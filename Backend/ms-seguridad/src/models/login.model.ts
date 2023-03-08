@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Usuario} from './usuario.model';
 
 /* Es una clase modelo que representa una tabla de base de datos. */
 @model()
@@ -33,6 +34,9 @@ export class Login extends Entity {
     required: true,
   })
   estadoToken: boolean;
+
+  @belongsTo(() => Usuario)
+  usuarioId: string;
 
   constructor(data?: Partial<Login>) {
     super(data);

@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
+import {Login} from './login.model';
+import {Rol} from './rol.model';
 
 /* Es una clase modelo que representa una tabla de base de datos. */
 @model()
@@ -49,6 +51,14 @@ export class Usuario extends Entity {
     required: true,
   })
   clave: string;
+
+
+
+  /* Un decorador que se utiliza para definir una relación entre dos modelos. */
+  @belongsTo(() => Rol)
+  rolId: string;
+  @hasMany(() => Login)
+  logins: Login[];
 
   constructor(data?: Partial<Usuario>) {
     super(data);
