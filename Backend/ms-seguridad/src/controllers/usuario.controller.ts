@@ -183,6 +183,7 @@ export class UsuarioController {
 
     if (usuario) {
       let codigo2fa = this.servicioSeguridad.crearTextoAleatorio(5);
+      console.log(codigo2fa);
       let login: Login = new Login();
       login.usuarioId = usuario._id!;
       login.codigo2fa = codigo2fa;
@@ -190,6 +191,7 @@ export class UsuarioController {
       login.token = '';
       login.estadoToken = false;
       this.repositorioLogin.create(login);
+      usuario.clave = '';
       // notificar a el usuario con SMS
       return usuario;
     }
@@ -220,6 +222,21 @@ export class UsuarioController {
       let token = this.servicioSeguridad.crearToken(usuario);
       if (Usuario) {
         usuario.clave = '';
+        try {
+          this.usuarioRepository.logins(usuario._id).patch(
+            {
+              estadoCodigo2fa: false,
+              token: token,
+            },
+            {
+              estadoCodigo2fa: false,
+            },
+          );
+        } catch {
+          console.log(
+            'No se ha almacenado el cambio del estado del toke en la base de datos',
+          );
+        }
         return {
           user: usuario,
           token: token,
