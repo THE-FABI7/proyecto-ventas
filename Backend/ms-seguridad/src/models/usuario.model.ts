@@ -1,4 +1,10 @@
-import {Entity, model, property, hasMany, belongsTo} from '@loopback/repository';
+import {
+  belongsTo,
+  Entity,
+  hasMany,
+  model,
+  property,
+} from '@loopback/repository';
 import {Login} from './login.model';
 import {Rol} from './rol.model';
 
@@ -48,11 +54,9 @@ export class Usuario extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
-  clave: string;
-
-
+  // la clave puede ser opcional: string;
+  clave?: string;
 
   /* Un decorador que se utiliza para definir una relación entre dos modelos. */
   @belongsTo(() => Rol)

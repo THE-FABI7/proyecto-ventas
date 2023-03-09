@@ -1,0 +1,2 @@
+al momento de crear el respositorio de
+rol en el crud es rols no rol como en el video
