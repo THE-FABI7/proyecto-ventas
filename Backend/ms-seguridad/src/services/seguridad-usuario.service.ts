@@ -110,4 +110,14 @@ export class SeguridadUsuarioService {
     var token = jwt.sign(datos, configuracionSeguridad.clavejwt);
     return token;
   }
+
+  /**
+   * Toma un token como parámetro, lo verifica y devuelve el rol del usuario
+   * @param {string} tk - string: El token a decodificar.
+   * @returns El rol del usuario.
+   */
+  obtenerRolToken(tk: string): string {
+    let obj = jwt.verify(tk, configuracionSeguridad.clavejwt);
+    return obj.role;
+  }
 }
